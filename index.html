@@ -1,53 +1,87 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Document</title>
+<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-    <header>
-        <h1>Guilherme Sousa</h1>
-        <nav>
-            <ul id="headerlist">
-                <li>Sobre</li>
-                <li>Projetos</li>
-                <li>Contato</li>
-            </ul>
-        </nav>
-    </header>
-    <section id="sec-sobre">
-        <h2>Sobre Mim</h2>
-        <img src="https://avatars.githubusercontent.com/u/142254512?v=4" alt="">
-        <p>Sou Guilherme, tenho 22 anos, atualmente almejo a posição e conhecimento de Desenvolvedor Full Stack, tenho habilidade com as linguagens Python, Java e Javascript no Back-End, já no Front-End possuo habilidades com HTML, CSS, Bootstrap e Javascript (DataTables, AlertifyJS, Font Awesome).</p>
-    </section>
-    <section>
-        <h2>Meus Projetos</h2>
-        <div id="div-cards">
+<header>
+<h1>Guilherme Sousa</h1>
+<nav>
+<ul id="headerlist">
+<li>Sobre</li>
+<li>Projetos</li>
+<li>Contato</li>
+</ul>
+</nav>
+</header>
+<section id="sec-sobre">
+<h2>Sobre Mim</h2>
+<img alt="" src="https://avatars.githubusercontent.com/u/142254512?v=4"/>
+<p>Sou Guilherme, tenho 22 anos, atualmente almejo a posição e conhecimento de Desenvolvedor Full Stack, tenho habilidade com as linguagens Python, Java e Javascript no Back-End, já no Front-End possuo habilidades com HTML, CSS, Bootstrap e Javascript (DataTables, AlertifyJS, Font Awesome).</p>
+</section>
+<section>
+<h2>Meus Projetos</h2>
+<div id="div-cards"></div>
+</section>
+<section>
+<h2>Contato</h2>
+<form action="">
+<label for="">Nome <br/><input id="" name="" type="text"/></label><br/>
+<label for="">E-mail <br/><input id="" name="" type="email"/></label><br/>
+<label for="">Mensagem <br/><textarea id="" name=""></textarea></label><br/>
+<button type="submit">Enviar</button>
+</form>
+</section>
+<footer>
+<p>2026 - Desenvolvido por Guilherme Sousa</p>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const projetos = [
+        {
+            titulo: "Projeto SafeShelf",
+            descricao: "O SafeShelf foi construído com o principal propósito: ajudar pequenos e médios comerciantes no monitoramento do estoque e controle do vencimento dos produtos.",
+            link: "https://github.com/guilhermesous/SafeShelf"
+        },
+        {
+            titulo: "Projeto TaskManager",
+            descricao: "App criado em Mendix com propósito de criar tarefas com descrição, data, status, urgência e atribuir responsáveis cadastrados no app.",
+            link: "https://github.com/guilhermesous/TaskManager"
+        }
+    ];
+
+    const container = document.querySelector("#div-cards");
+
+    projetos.forEach(projeto => {
+        container.innerHTML += `
             <article>
-                <h3>Projeto SafeShelf</h3>
-                <p class="limite-texto">O SafeShelf foi construído com o principal próposito: Ajudar o público-alvo (pequenos e médios comerciantes) no monitoramento do estoque e do controle do vencimento dos seus Produtos.</p>
-                <a href="https://github.com/guilhermesous/SafeShelf" target="_blank">Link do Github</a>
+                <h3>${projeto.titulo}</h3>
+                <p class="limite-texto">${projeto.descricao}</p>
+                <a href="${projeto.link}" target="_blank">Link do Github</a>
             </article>
-            <article>
-                <h3>Projeto TaskManager</h3>
-                <p class="limite-texto">App criado em Mendix com propósito de criar tarefas com descrição, data, status, urgência e atribuir responsáveis que também são cadastrados no App.</p>
-                <a href="https://github.com/guilhermesous/TaskManager" target="_blank">Link do Github</a>
-            </article>
-        </div>
-    </section>
-    <section>
-        <h2>Contato</h2>
-        <form action="">
-            <label for="">Nome <br><input type="text" name="" id=""></label><br>
-            <label for="">E-mail <br><input type="email" name="" id=""></label><br>
-            <label for="">Mensagem <br><textarea name="" id=""></textarea></label><br>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-    <footer>
-        <p>2026 - Desenvolvido por Guilherme Sousa</p>
-    </footer>
-</body>
+        `;
+    });
+
+    const formulario = document.querySelector("form");
+
+    formulario.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const nome = formulario.querySelector('input[type="text"]').value.trim();
+        const email = formulario.querySelector('input[type="email"]').value.trim();
+        const mensagem = formulario.querySelector("textarea").value.trim();
+
+        if (!nome || !email || !mensagem) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        alert("Formulário enviado com sucesso!");
+    });
+});
+</script></body>
 </html>
